@@ -1,0 +1,37 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: MyAdmin
+    version: 0.0.1
+    language: es
+  datasource:
+    url: jdbc:postgresql://localhost:5432/myadmin
+    username: ${DB_USER:postgres}
+    password: ${DB_PASS:Jdov2280.}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+logging:
+  level:
+    root: INFO
+    org.springframework.web: DEBUG
+    com.judaocva.myadmincore: DEBUG
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+
+auth:
+    jwt:
+        secret: myAdminCoreSecretKey
+        expiration: 300000
+        expiration-refresh: 61200000
