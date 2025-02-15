@@ -11,7 +11,21 @@ spring:
     username: ${DB_USER:postgres}
     password: ${DB_PASS:Jdov2280.}
     driver-class-name: org.postgresql.Driver
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 10
+      idle-timeout: 30000
+      pool-name: myadmin-core-pool
+      max-lifetime: 1800000
+      connection-timeout: 30000
+      auto-commit: true
+      transaction-isolation: TRANSACTION_READ_COMMITTED
+      register-mbeans: true
+      data-source-j-n-d-i: myadmin-core-datasource
+      leak-detection-threshold: 2000
+      validation-timeout: 5000
   jpa:
+    open-in-view: false
     hibernate:
       ddl-auto: update
     show-sql: true
